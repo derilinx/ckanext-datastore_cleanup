@@ -20,7 +20,7 @@ def _resource_set(state='deleted'):
     return set(r[0] for r in resources)
 
 @ckan.logic.side_effect_free
-def status (context, data_dict):
+def status(context, data_dict):
     deleted = _resource_set()
     active = _resource_set('active')
     datastore_ids = set(backend.get_all_resources_ids_in_datastore())
@@ -30,7 +30,8 @@ def status (context, data_dict):
             'datastore': len(datastore_ids)
             }
 
-def run (context, data_dict):
+
+def purge(context, data_dict):
     deleted = _resource_set()
     datastore_ids = set(backend.get_all_resources_ids_in_datastore())
 
@@ -65,7 +66,7 @@ class CleanupPlugin(plugins.SingletonPlugin):
     def get_actions(self):
         return {
             'datastore_cleanup_status': status,
-            'datastore_cleanup_run': run,
+            'datastore_cleanup_run': purge,
         }
 
 
@@ -75,4 +76,4 @@ class CleanupPlugin(plugins.SingletonPlugin):
             'datastore_cleanup_status': is_sysadmin,
             'datastore_cleanup_run': is_sysadmin,
         }
-    
+

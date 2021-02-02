@@ -77,12 +77,11 @@ setup(
     entry_points='''
         [ckan.plugins]
         datastore_cleanup        = ckanext.datastore_cleanup.plugin:CleanupPlugin
+        
+        [paste.paster_command]
+        datastore_cleanup      = ckanext.datastore_cleanup.commands.datastore_cleanup:DatastoreCleanup
 
     ''',
-#    '''[paste.paster_command]
-#        stats                    = ckanext.dgithree.commands.stats:StatsCommand
-#
-#    ''',
 
     # If you are changing from the default layout of your extension, you may
     # have to change the message extractors, you can read more about babel
