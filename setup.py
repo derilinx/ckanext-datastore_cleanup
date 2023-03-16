@@ -77,10 +77,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         datastore_cleanup        = ckanext.datastore_cleanup.plugin:CleanupPlugin
-        
-        [paste.paster_command]
-        datastore_cleanup      = ckanext.datastore_cleanup.commands.datastore_cleanup:DatastoreCleanup
-
     ''',
 
     # If you are changing from the default layout of your extension, you may
